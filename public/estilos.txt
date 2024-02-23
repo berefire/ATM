@@ -1,0 +1,135 @@
+.cajero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .screen {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  .display {
+    margin-bottom: 20px;
+  }
+  
+  .textcontainer {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .botones-izquierdos,
+  .botones-derechos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .boton-izquierdo,
+  .boton-derecho {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .boton-izquierdo:hover,
+  .boton-derecho:hover {
+    background-color: #0056b3;
+  }
+  
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .key {
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .key:hover {
+    background-color: #0056b3;
+  }
+
+<div className='cajero'>
+  <div className='screen'>
+    <h1>Ingrese su usuario:</h1>
+    <form>
+      <div className='botones-izquierdos'>
+        <button className='boton-izquierdo'>Botón Izquierdo 1</button>
+        <button className='boton-izquierdo'>Botón Izquierdo 2</button>
+      </div>
+      <div className='display'>
+        <input 
+          className='textcontainer' 
+          type="text" 
+          value={inputText}
+          readOnly />
+      </div>
+      <div className='botones-derechos'>
+        <button className='boton-derecho'>Botón Derecho 1</button>
+        <button className='boton-derecho'>Botón Derecho 2</button>
+      </div>
+      <div className='keyboard'>
+        {teclado.map((fila, rowIndex) => (
+          <div className='row' key={rowIndex}>
+            {fila.map((tecla, colIndex) => (
+              <button className="key" key={colIndex} onClick={() => handleKeyClick(tecla)}>
+                {tecla}
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
+    </form>
+  </div>
+</div>
+
+
+onst cuenta_existente = cuentas.find(cuenta => cuenta.nombre === inputText);
+
+      if (cuenta_existente) {
+          setNoUser(false);
+          setUser(false);
+          setPassword(true);
+          setColorButtonLeft(prevState => {
+            const newState = [...prevState]; 
+            newState[4] = !newState[4];
+            return newState;
+          });
+          console.log(inputText)
+          if(cuenta_existente.password === inputText) 
+            console.log(inputText)
+      } else {
+          setUser(false);
+          setNoUser(true);
+          setPassword(false);
+          setInputText('');
+      }
+
+
+
